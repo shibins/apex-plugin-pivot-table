@@ -1,0 +1,54 @@
+oj-datagrid-cell-text, .oj-datagrid-header-cell-text {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        line-height:2;
+        font-size:0.8em ;
+}
+
+.oj-datagrid-header-cell-content {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        white-space: normal;
+        font-size: 1.5rem;
+
+}
+
+.oj-datagrid-cell {
+    font-size: 1.5rem;
+     
+}
+
+
+.oj-datagrid-top-corner{
+	background-color:#f2f4f7
+}
+
+.oj-button-text {
+  font-size: 1.3rem;  
+}
+
+.oj-datagrid-cell-content {
+	top:-10px;
+}
+
+
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top:-1px;
+}
+
+/* Page content */
+.content {
+  padding: 16px;
+}
+
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 102px;
+}

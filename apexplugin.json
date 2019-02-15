@@ -1,0 +1,34 @@
+{
+  "name" : "JET PictoChart",
+  "version" : "1.0.0",
+  "description" : "APEX Region Plugin for  Pivot Table based on a SQL statement.",
+  "keywords" : ["JET","Pivot" , "Table"],
+  "homepage" : "https://github.com/shibins/apex-plugin-pivot-table",
+  "bugs" : {
+    "url" : "https://github.com/shibins/apex-plugin-pivot-table/issues",
+    "email" : "shibi.ns@gmail.com"
+  },
+  "license" : "MIT",
+  "author" : {
+    "name" : "Shibi Nirappel Sridharan",
+    "email" : "shibi.ns@gmail.com",
+    "url" : "http://shibins.blogspot.com",
+    "twitter" : "nsshibi",
+  },
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/shibins/apex-plugin-pivot-table.git"
+  },
+  "oracle" : {
+    "versions" : ["11.2.0.1", "12.1.0.1", "12.2.0.1"],
+    "apex" : {
+      "versions" : ["5.1.0,5.1.1,5.1.2"],
+      "plugin" : {
+        "internalName" : "COM.ORACLE.APEX.JET.CUBICDATASOURCE",
+        "type" : "region",
+        "demo" : "https://apex.oracle.com/pls/apex/f?p=100:100",
+        "previewImage" : "https://github.com/shibins/apex-plugin-pivot-table/raw/master/preview.png"
+      }
+    }
+  }
+}
