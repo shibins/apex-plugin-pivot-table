@@ -1,4 +1,4 @@
-# Oracle APEX Region Plugin - Pivot Table Plugin
+# Oracle APEX Region Plugin - PictoChart
 Region Plugin to demonstrate the integration of JET Charts not currently exposed in APEX.
 
 
@@ -61,15 +61,15 @@ eg
 ```
 select  
 Product_Line          "Product Line",
-PROPERTY              "Property" , 
+PROPERTY         	  "Property" , 
 CUSTOMER_TYPE         "Customer Type",
 CURRENT_QUARTER       "Current Quarter",
 Previous_Quarter      "Previous Quarter",
 UNITS                 "Units",
 LINK                  "Link",
 sum(current_consumed) "Current Quarter Consumed" ,  
-sum(CONSUMED) 	      "Consumed" ,
-sum(AVAILABLE)        "Available" ,
+sum(CONSUMED) 		  "Consumed" ,
+sum(AVAILABLE) 		  "Available" ,
 sum(NEXT_DEMAND)      "Next Quarter Demand" ,
 sum(NEXT_INBOUND)     "Next Quarter Inbound" ,
 round(avg(round(consumed/(consumed + available) * 100,2))) "% Of Allocation",
@@ -80,7 +80,7 @@ group by  P_AND_L,PROPERTY  , CUSTOMER_TYPE,CURRENT_CYCLE,NEXT_CYCLE,UNITS,LINK,
 ```
 
 ## Demo Application
-[https://apex.oracle.com/pls/apex/f?p=ROELSAPEXJET:PICTO](https://apex.oracle.com/pls/apex/f?p=100:100)
+[https://apex.oracle.com/pls/apex/f?p=100:100](https://apex.oracle.com/pls/apex/f?p=100:100)
 
 ## Blogpost
 
