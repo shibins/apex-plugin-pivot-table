@@ -1,5 +1,5 @@
 {
-  "name" : "JET PictoChart",
+  "name" : "JET Pivot Table",
   "version" : "1.0.0",
   "description" : "APEX Region Plugin for  Pivot Table based on a SQL statement.",
   "keywords" : ["JET","Pivot" , "Table"],
