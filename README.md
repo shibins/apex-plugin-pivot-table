@@ -67,14 +67,12 @@ PROPERTY              "Property" ,
 CUSTOMER_TYPE         "Customer Type",
 CURRENT_QUARTER       "Current Quarter",
 Previous_Quarter      "Previous Quarter",
-UNITS                 "Units",
-LINK                  "Link",
 sum(current_consumed) "Current Quarter Consumed" ,  
 sum(CONSUMED) 	      "Consumed" ,
 sum(AVAILABLE) 	      "Available" ,
-sum(NEXT_DEMAND)      "Next Quarter Demand" ,
-sum(NEXT_INBOUND)     "Next Quarter Inbound" ,
-round(avg(round(consumed/(consumed + available) * 100,2))) "% Of Allocation",
+sum(NEXT_DEMAND)      "Demand" ,
+sum(NEXT_INBOUND)     "Inbound" ,
+PCT_ALOC              "% Of Allocation",
 sort_order 
 from report_v 
 group by  P_AND_L,PROPERTY  , CUSTOMER_TYPE,CURRENT_CYCLE,NEXT_CYCLE,UNITS,LINK,sort_order    order by sort_order 
