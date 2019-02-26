@@ -1,5 +1,5 @@
 # Oracle APEX Region Plugin - Pivot Table 
-Region Plugin to demonstrate the integration of JET Charts not currently exposed in APEX.
+Region Plugin
 
 
 ## Changelog
