@@ -18,6 +18,7 @@ Region Plugin
 The implemented Plugin Settings  :
 - **Configuration Object** -  configures dataValues, layout and styles 
 eg 
+```
 {
 	dataValues : [
 	    { attribute: 'Current Quarter Consumed' },
@@ -48,6 +49,7 @@ eg
 	rowstyle         :"width: 150px;height:60px;overflow-wrap: break-word;"
 	
 }
+```
 
 - **Cell Renderer** - A function in format function(cellContext) {} and retuns row data 
 - **Column Render** - A function in format function(headerContext) {} and retuns row data 
