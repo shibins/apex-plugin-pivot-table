@@ -86,4 +86,4 @@ group by  P_AND_L,PROPERTY  , CUSTOMER_TYPE,CURRENT_CYCLE,NEXT_CYCLE,UNITS,LINK,
 
 
 ## Preview
-## ![](https://github.com/APEXGru/JET-PictoChart/raw/master/preview.png)
+## ![](https://github.com/shibins/apex-plugin-pivot-table/blob/master/preview.png)
