@@ -1,11 +1,8 @@
 ! function (jet, $, server, util, debug) {
     "use strict";
     
-    const DELIMITER           = "_";
-    const DEFAULT_COLUMNSTYLE = "width: 100px;height:75px;text-align: center;overflow-wrap: break-word;" ;
-    const DEFAULT_CELLSTYLE   = "text-align: center;vertical-align:middle;";
-    const DEFAULT_ROWSTYLE    = "width: 150px;height:60px;overflow-wrap: break-word;";
-
+    const DELIMITER = "_";
+    
     function replaceSpaceWithChar(str) {
         return str.replace(/\s+/g, DELIMITER);
     }
@@ -15,7 +12,7 @@
     }
 
     jet.cubicdatasource = {
-        init: function (pRegionId, pApexAjaxIdentifier, config  , cellrender,columnrender, rowrender) {
+        init: function (pRegionId, pApexAjaxIdentifier, config  , cellrender,columnrender, rowrender,classRender) {
             require(["ojs/ojcore",   'jquery',   'ojs/ojmodel',  'promise',  'ojs/ojdatagrid',  'ojs/ojarraydatagriddatasource','ojs/ojcube'], function (oj,   $) {
 
                 function generateCube(dataArr, axes) {
@@ -25,34 +22,49 @@
                 function dataGridModel(dataArr) {
  
                     var axes = config.layout;
-                    return new oj.CubeDataGridDataSource(generateCube(dataArr, axes));
+                    if (dataArr.length > 0 ) {
+                        return new oj.CubeDataGridDataSource(generateCube(dataArr, axes));
+                    }
+                    
 
                 };
             
                 server.plugin(pApexAjaxIdentifier, {}, {
-                    success: function (pData) {
+                success: function (pData) {
 
-                        var dataSource = dataGridModel(pData.items);
+                    var dataSource = dataGridModel(pData.items);
                     
-                        $(pRegionId).ojDataGrid({
-                            "data"     : dataSource,
-                            "cell"     : {
-                                "style"    :  typeof config.cellstyle !== "undefined" ?  config.cellstyle : DEFAULT_CELLSTYLE,
-                                "renderer" : function(cellContext) {
-                                    if (typeof cellrender !== "undefined") {
-                                        return cellrender(cellContext) ;
-                                    }
-                                    else
-                                    {
-                                        var data = cellContext['data'];
-                                        return data;
-                                    }
-                                },
+                    $(pRegionId).ojDataGrid({
+                        "data"     : dataSource,
+                        "cell"     : {
+                            "style"    :  typeof config.cellstyle !== "undefined" ?  config.cellstyle : "text-align: center;vertical-align:middle;",
+                            className  :  function(cellContext) {
+
+                                        if (typeof classRender !== "undefined") {
+                                            return classRender(cellContext) ;
+                                        }
+                                        else
+                                        {
+                                            
+                                            return "";
+                                        } 
+                                        
                             },
-                            "header": {
-                                "column": {
-                                    
-                                    "style":  typeof config.columnstyle !== "undefined" ?  config.columnstyle :DEFAULT_COLUMNSTYLE,
+                            "renderer" : function(cellContext) {
+                                if (typeof cellrender !== "undefined") {
+                                    return cellrender(cellContext) ;
+                                }
+                                else
+                                {
+                                    var data = cellContext['data'];
+                                    return data;
+                                }
+                            },
+                        },
+                        "header": {
+                            "column": {
+                                    "cell": { "className": "myCellStyle" },
+                                    "style":  typeof config.columnstyle !== "undefined" ?  config.columnstyle :"width: 100px;height:75px;text-align: center;overflow-wrap: break-word;" ,
                                     "renderer": function(headerContext) {
                                         if (typeof columnrender !== "undefined") {
                                             return columnrender(headerContext) ;
@@ -66,7 +78,7 @@
                                 },
                                 "row": {
 
-                                    "style": typeof config.rowstyle !== "undefined" ?  config.rowstyle :DEFAULT_ROWSTYLE,
+                                    "style": typeof config.rowstyle !== "undefined" ?  config.rowstyle :"width: 150px;height:60px;overflow-wrap: break-word;",
                                     "renderer": function(headerContext) {
                                         if (typeof rowrender !== "undefined") {
                                             return rowrender(headerContext) ;
@@ -84,7 +96,10 @@
                         });
                         
                         $(pRegionId).ojDataGrid("option", "bandingInterval", { "row": 1 });
-                         
+
+ //                       $(pRegionId).ojDataGrid("option",'header.row',{ "metric_name": "metric_name" });
+
+
                     }
                 });
 
